@@ -17,7 +17,7 @@ export default function ContractorContacts() {
                 <BreadcrumbComponent loading={loading} partName={'contractor contacts'} />
             </div>
             <div className='w-full hidden md:flex justify-start items-center font-bold text-2xl'>
-                Contractor Contacts
+                Contractor Contacts 
             </div>
             <div className='w-full h-full md:pt-12 pb-10 flex flex-wrap justify-center gap-4'>
                 {
