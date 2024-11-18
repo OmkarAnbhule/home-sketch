@@ -6,7 +6,6 @@ export const fetchDisplayCards = (setDisplayCards, setLoading) => {
         })
             .then((res) => res.json())
             .then(({ data }) => {
-                console.log(data)
                 setDisplayCards(data)
             })
     }
