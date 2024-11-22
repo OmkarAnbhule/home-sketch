@@ -4,7 +4,7 @@ export const fetchDisplayCards = (setLoading, dispatch) => {
     try {
         fetch('/api/v1/displayCenter', {
             method: 'GET',
-            cache: 'force-cache'
+            cache: 'default'
         })
             .then((res) => res.json())
             .then(({ data }) => {
