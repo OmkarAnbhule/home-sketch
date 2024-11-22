@@ -71,7 +71,7 @@ const Skeleton = ({ length }) => {
 
 export default function DisplayCenter() {
     const dispatch = useDispatch()
-    const displayCards = useSelector((state) => { console.log(state); return state.filter.filteredData });
+    const displayCards = useSelector((state) => state.filter.filteredData);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {

@@ -20,8 +20,10 @@ const filterSlice = createSlice({
                 if (depth && item.depth.toString() !== depth) return false;
 
                 // // Bedrooms filter
-                if (bedrooms.length > 0 && !bedrooms.includes(item.bedrooms.toString())) return false;
-
+                if (bedrooms.length > 0) {
+                    if (bedrooms.includes('6+') && item.bedrooms < 6) return false; // Handle 6+ condition
+                    if (!bedrooms.includes(item.bedrooms.toString())) return false; // Regular bedroom filter
+                }
                 // // Living filter
                 if (living && item.living.toString() !== living) return false;
 
@@ -56,8 +58,10 @@ const filterSlice = createSlice({
                 if (depth && item.depth.toString() !== depth) return false;
 
                 // // Bedrooms filter
-                if (bedrooms.length > 0 && !bedrooms.includes(item.bedrooms.toString())) return false;
-
+                if (bedrooms.length > 0) {
+                    if (bedrooms.includes('6+') && item.bedrooms < 6) return false; // Handle 6+ condition
+                    if (!bedrooms.includes(item.bedrooms.toString())) return false; // Regular bedroom filter
+                }
                 // // Living filter
                 if (living && item.living.toString() !== living) return false;
 
