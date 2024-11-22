@@ -67,7 +67,9 @@ export default function Header({ index, setOpen }) {
                             (
                                 <div className='flex md:hidden justify-around items-center w-1/3 h-full gap-2 p-2'>
                                     <div className='w-fit h-fit rounded-md bg-muted'>
-                                        <Sheet btnText={<SlidersHorizontal />} className={'w-fit h-fit bg-muted'} />
+                                        <Sheet btnText={<SlidersHorizontal />} className={'w-fit h-fit bg-muted'} >
+                                            <Filter />
+                                        </Sheet>
                                     </div>
                                     <div className='w-fit h-fit p-[10px] px-[14px] rounded-md bg-muted'>
                                         <HeartIcon className='size-4 cursor-pointer hover:fill-red-500' />

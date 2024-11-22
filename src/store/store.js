@@ -12,6 +12,7 @@ import {
     REHYDRATE,
 } from "redux-persist";
 import userReducer from "./slices/userSlice";
+import filterReducer from './slices/fliterSlice'
 
 // Configure LocalForage
 localforage.config({
@@ -34,6 +35,7 @@ localforage
 // Combine reducers
 const combinedReducer = combineReducers({
     user: userReducer,
+    filter: filterReducer
 });
 
 const rootReducer = (state, action) => {
@@ -46,6 +48,7 @@ const rootReducer = (state, action) => {
 const persistConfig = {
     key: "redux",
     storage: localforage,
+    whitelist: ["user", "filters"]
 };
 
 // Create persisted reducer

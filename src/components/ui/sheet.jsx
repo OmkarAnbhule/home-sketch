@@ -37,7 +37,7 @@ export default function Sheet({ children, btnText, className }) {
                 ></div>
                 <div
                     ref={divRef}
-                    className={`md:w-1/4 w-full bg-white dark:bg-black ${open ? 'md:right-0 bottom-0 top-1/2' : 'md:-right-[2000px] -bottom-[2000px]'} right-0 md:top-0 md:rounded-none rounded-t-3xl z-50 fixed h-1/2 md:h-full transition-all duration-500`}
+                    className={`md:w-1/4 w-full bg-white dark:bg-black ${open ? 'md:right-0 bottom-10 top-1/2' : 'md:-right-[2000px] -bottom-[2000px]'} right-0 md:top-0 md:rounded-none rounded-t-2xl z-50 fixed h-1/2 pb-10 md:h-full transition-all duration-500`}
                 >
                     {children}
                 </div>

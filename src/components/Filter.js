@@ -9,6 +9,9 @@ import { Separator } from "./ui/separator"
 import { Combobox } from "./combo-box"
 import { CheckboxComponent, ProgressBarComponent, RadioComponent, ReusableField } from "./ui/form-components"
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { setFilters } from "@/store/slices/fliterSlice"
+import { debounce } from "lodash"
 
 const formSchema = z.object({
     range: z.tuple([z.number(), z.number()]),
@@ -22,11 +25,12 @@ const formSchema = z.object({
 })
 
 export function Filter() {
+    const dispatch = useDispatch()
     const [isChanged, setIsChanged] = useState(true)
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            range: [50, 300],
+            range: [600, 3000],
             width: '',
             depth: '',
             bedrooms: [],
@@ -38,9 +42,11 @@ export function Filter() {
     })
 
     useEffect(() => {
-        const subscription = form.watch((values) => {
-            setIsChanged(false)
-        })
+        const subscription = form.watch(
+            debounce((values) => {
+                dispatch(setFilters(values));
+            }, 300)
+        );
         return () => subscription.unsubscribe()
     }, [form])
 
@@ -51,7 +57,7 @@ export function Filter() {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full overflow-auto custom-scroll">
-                <div className='w-full flex flex-col '>
+                <div className='w-full flex flex-col'>
                     <div className='w-full h-fit flex justify-around items-center py-4 px-0'>
                         <p className='text-2xl font-bold'>Filters</p>
                         <Button variant={"secondary"} className="bg-muted" onClick={() => { form.reset(); setIsChanged(true) }} disabled={isChanged} >Reset</Button>
@@ -73,10 +79,13 @@ export function Filter() {
                         component={Combobox}
                         frameworks={[
                             { value: '', label: 'Select' },
-                            { value: "12.5", label: "12.5" },
-                            { value: "15", label: "15" },
-                            { value: "18", label: "18" },
-                            { value: "24", label: "24" },
+                            { value: "30", label: "30" },
+                            { value: "20", label: "20" },
+                            { value: "25", label: "25" },
+                            { value: "35", label: "35" },
+                            { value: "50", label: "50" },
+                            { value: "40", label: "40" },
+
                         ]}
                         placeholder={'Select'}
                     />
@@ -87,10 +96,10 @@ export function Filter() {
                         component={Combobox}
                         frameworks={[
                             { value: '', label: 'Select' },
-                            { value: "12.5", label: "12.5" },
-                            { value: "15", label: "15" },
-                            { value: "18", label: "18" },
-                            { value: "24", label: "24" },
+                            { value: "40", label: "40" },
+                            { value: "30", label: "30" },
+                            { value: "25", label: "25" },
+                            { value: "60", label: "60" },
                         ]}
                         placeholder={'Select'}
                     />
@@ -117,6 +126,7 @@ export function Filter() {
                             { value: "1", label: "1" },
                             { value: "2", label: "2" },
                             { value: "3", label: "3" },
+                            { value: "4", label: "4" },
                         ]}
                     />
                     <ReusableField

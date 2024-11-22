@@ -19,8 +19,8 @@ export const ProgressBarComponent = ({ field, form }) => {
                 slots={{ thumb: AirbnbThumbComponent }}
                 value={field.value}
                 onChange={(e, val) => form.setValue(field.name, val)}
-                min={0}
-                max={400}
+                min={600}
+                max={3000}
                 color="primary"
             />
         </div>

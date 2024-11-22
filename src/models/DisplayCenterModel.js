@@ -10,6 +10,8 @@ const DisplayCenterSchema = new mongoose.Schema(
         bathrooms: { type: Number, required: true },
         garage: { type: Number, required: true },
         living: { type: Number, required: true },
+        storeys: { type: String, required: true, enum: ['single', 'double'] },
+        driveway: { type: String, required: true, enum: ['left', 'right', 'not-sure'] },
         blueprint: { type: String, required: true },
         caraousel: [{ type: String, required: true }],
         models: { type: String, required: true },
