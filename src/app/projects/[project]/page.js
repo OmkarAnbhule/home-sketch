@@ -1,8 +1,8 @@
-import Projects from '@/components/Projects'
+import Project from '@/components/Project'
 import React from 'react'
 
 export default function page() {
     return (
-        <Projects />
+        <Project />
     )
 }

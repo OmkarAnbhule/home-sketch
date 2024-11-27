@@ -8,9 +8,12 @@ import { Combobox } from './combo-box'
 import Sheet from './ui/sheet'
 import { Filter } from './Filter'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useDispatch, useSelector } from 'react-redux'
+import { setStatus } from '@/store/slices/projectSlice'
 
 export default function Header({ index, setOpen }) {
-    const [status, setStatus] = useState('');
+    const dispatch = useDispatch()
+    const { status } = useSelector((state) => state.project)
 
     return (
         <AnimatePresence mode='popLayout'>
@@ -59,7 +62,7 @@ export default function Header({ index, setOpen }) {
                                             { value: "onHold", label: "On Hold" },
                                             { value: "NotStarted", label: "Not Started" },
                                         ]}
-                                        onChange={(value) => setStatus(value)}
+                                        onChange={(value) => dispatch(setStatus(value))}
                                     />
                                 </div>
                             ) :

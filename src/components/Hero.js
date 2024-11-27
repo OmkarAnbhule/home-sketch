@@ -17,7 +17,7 @@ export default function Hero({ children }) {
             setActive(0);
         } else if (pathname === '/sales') {
             setActive(1);
-        } else if (pathname === '/projects') {
+        } else if (pathname.startsWith('/projects')) {
             setActive(2);
         } else if (pathname.startsWith('/settings')) {
             setActive(3);

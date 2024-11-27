@@ -13,6 +13,7 @@ import {
 } from "redux-persist";
 import userReducer from "./slices/userSlice";
 import filterReducer from './slices/fliterSlice'
+import statusReducer from './slices/projectSlice'
 
 // Configure LocalForage
 localforage.config({
@@ -35,7 +36,8 @@ localforage
 // Combine reducers
 const combinedReducer = combineReducers({
     user: userReducer,
-    filter: filterReducer
+    filter: filterReducer,
+    project: statusReducer
 });
 
 const rootReducer = (state, action) => {

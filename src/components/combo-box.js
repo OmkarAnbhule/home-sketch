@@ -14,14 +14,14 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 
-const Combobox = ({ frameworks, field, placeholder, onChange }) => {
+const Combobox = ({ frameworks, field, placeholder, onChange, variant }) => {
     const [open, setOpen] = React.useState(false);
     const { value } = field;
     return (
         <Popover open={open} onOpenChange={setOpen} >
             <PopoverTrigger asChild>
                 <Button
-                    variant="outline"
+                    variant={variant || "outline"}
                     role="combobox"
                     className="w-full justify-between text-muted-foreground"
                 >
