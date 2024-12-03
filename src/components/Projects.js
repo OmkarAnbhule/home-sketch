@@ -87,6 +87,8 @@ const ProjectCard = React.memo(({ admin, project }) => {
     )
 })
 
+ProjectCard.displayName = 'ProjectCard'
+
 
 export default function Projects() {
     const dispatch = useDispatch()

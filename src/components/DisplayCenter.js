@@ -62,6 +62,8 @@ const DisplayCenterCard = React.memo(({ card }) => {
     )
 });
 
+DisplayCenterCard.displayName = 'DisplayCenterCard';
+
 const Skeleton = ({ length }) => {
     Array.from({ length: length }).map((_, index) => (
         <DisplayCardSkeleton key={index} />
