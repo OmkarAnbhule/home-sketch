@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority'
 import React from 'react'
 
 const statusVariants = cva(
-    "rounded-3xl w-fit border-2 px-3 py-1",
+    "rounded-3xl w-fit min-w-32 text-center border-2 font-semibold font-sans px-3.5 py-1.5",
     {
         variants: {
             variant: {

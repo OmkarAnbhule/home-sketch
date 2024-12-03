@@ -35,5 +35,5 @@ export const DisplayCardSkeleton = () => {
 }
 
 export const BreadCrumbSkeleton = () => {
-    return <div className="h-4 w-[250px] bg-muted-foreground/15 animate-pulse" />;
+    return <div className="h-6 w-[250px] bg-muted-foreground/15 animate-pulse" />;
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, Suspense } from 'react';
+import React, { useRef, useState, useEffect, Suspense, useMemo } from 'react';
 import DisplayCard from './DisplayCard';
 import { SearchIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Model } from './Model';
@@ -6,7 +6,7 @@ import { DisplayCardSkeleton } from './ui/Skeleton';
 import { fetchDisplayCards } from '@/utils/DIsplayCenterUtils';
 import { useDispatch, useSelector } from 'react-redux';
 
-const DisplayCenterCard = ({ card }) => {
+const DisplayCenterCard = React.memo(({ card }) => {
     const carouselRef = useRef(null);
     const scrollLeft = () => {
         if (carouselRef.current) {
@@ -60,8 +60,7 @@ const DisplayCenterCard = ({ card }) => {
             </div>
         </div>
     )
-}
-
+});
 
 const Skeleton = ({ length }) => {
     Array.from({ length: length }).map((_, index) => (
@@ -69,23 +68,26 @@ const Skeleton = ({ length }) => {
     ))
 }
 
+
 export default function DisplayCenter() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const displayCards = useSelector((state) => state.filter.filteredData);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        if (isLoading)
-            fetchDisplayCards(setIsLoading, dispatch)
+        if (isLoading) fetchDisplayCards(setIsLoading, dispatch);
     }, [dispatch]);
+
+    const sortedDisplayCards = useMemo(() => {
+        return [...(displayCards || [])].sort((a, b) => a.position - b.position);
+    }, [displayCards]);
+
     return (
         <div className='w-[98%] h-full p-4 md:mt-4 my-4 select-none overflow-auto custom-scroll snap-x snap-mandatory flex md:flex-nowrap flex-wrap flex-col gap-4'>
-            <Suspense fallback={<Skeleton length={8} />}>
-                {
-                    displayCards?.map((card, index) => (
-                        <DisplayCenterCard card={card} key={index} />
-                    ))
-                }
+            <Suspense fallback={<Skeleton length={5} />}>
+                {sortedDisplayCards?.map((card, index) => (
+                    <DisplayCenterCard card={card} key={index} />
+                ))}
             </Suspense>
         </div>
     );

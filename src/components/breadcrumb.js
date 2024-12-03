@@ -32,6 +32,8 @@ export function BreadcrumbComponent({ partName, loading }) {
         );
     });
 
+    console.log(loading)
+
     if (loading)
         return <BreadCrumbSkeleton />;
 

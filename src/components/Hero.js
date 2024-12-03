@@ -5,7 +5,6 @@ import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { fetchDisplayCards } from "@/utils/DIsplayCenterUtils";
 
 export default function Hero({ children }) {
     const pathname = usePathname()
@@ -43,7 +42,7 @@ export default function Hero({ children }) {
                         initial={{ opacity: 0, y: 500 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 500 }}
-                        transition={{ duration: 0.3, delay: 0.2 }}
+                        transition={{ duration: 0.3, delay: 0.4 }}
                         className='w-full h-fit flex justify-center items-center overflow-hidden'
                     >
                         {children}

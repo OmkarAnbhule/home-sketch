@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Combobox } from './combo-box'
 import { useDispatch, useSelector } from 'react-redux'
 import { setStatus } from '@/store/slices/projectSlice'
@@ -9,7 +9,7 @@ import { fetchProjects } from '@/utils/ProjectsUtils'
 import { useRouter } from 'next/navigation'
 
 
-const ProjectCard = ({ admin, project }) => {
+const ProjectCard = React.memo(({ admin, project }) => {
     const router = useRouter()
     return (
         <div className='bg-muted w-[380px] h-[330px] p-6 rounded-lg flex flex-col gap-6 dark:hover:bg-slate-700 hover:bg-slate-100 cursor-pointer' onClick={() => router.push(`/projects/${project._id}`)}>
@@ -85,7 +85,7 @@ const ProjectCard = ({ admin, project }) => {
             </div>
         </div>
     )
-}
+})
 
 
 export default function Projects() {
@@ -99,6 +99,9 @@ export default function Projects() {
             fetchProjects(dispatch, setLoading)
     }, [])
 
+    const sortedProjects = useMemo(() => {
+        return [...(projects || [])].sort((a, b) => a.position - b.position);
+    }, [projects]);
 
     if (projects)
         return (
@@ -123,7 +126,7 @@ export default function Projects() {
                 <div className='w-full h-full md:pt-12 pb-0 md:pb-20 flex flex-wrap md:justify-normal justify-center gap-4 overflow-y-auto custom-scroll'>
                     {
                         !loading &&
-                        projects
+                        sortedProjects
                             .filter((item) => status === '' || item.status === status)
                             .map((item, idx) => (
                                 <ProjectCard admin={admin} key={idx} project={item} />
