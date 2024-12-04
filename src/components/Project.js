@@ -8,6 +8,7 @@ import { Edit, MapPin, UserCog } from 'lucide-react'
 import Sheet from './ui/sheet'
 import dynamic from 'next/dynamic'
 import Task from './Task'
+import { Authority, ContractorsData, OwnerData } from '@/lib/projectUtils'
 
 const Files = dynamic(() => import('./Files'), { ssr: false })
 
@@ -67,13 +68,13 @@ export default function Project() {
                             </div>
                             <div className='w-full py-3'>
                                 {
-                                    Array.from({ length: 4 }).map((item, index) => (
+                                    OwnerData.map((item, index) => (
                                         <div className='w-full p-2.5 border-b-2 flex justify-between items-center' key={index}>
                                             <div className='flex items-center gap-2'>
-                                                <UserCog size={16} />
-                                                <p>Geotech Engineer</p>
+                                                {item.svg}
+                                                <p>{item.title}</p>
                                             </div>
-                                            <p className='font-bold'>ABH Soil</p>
+                                            <p className='font-bold'>{item.name}</p>
                                         </div>
                                     ))
                                 }
@@ -91,13 +92,13 @@ export default function Project() {
                             </div>
                             <div className='w-full py-3'>
                                 {
-                                    Array.from({ length: 5 }).map((item, index) => (
+                                    ContractorsData.map((item, index) => (
                                         <div className='w-full p-2.5 border-b-2 flex justify-between items-center' key={index}>
                                             <div className='flex items-center gap-2'>
-                                                <UserCog size={16} />
-                                                <p>Geotech Engineer</p>
+                                                {item.svg}
+                                                <p>{item.title}</p>
                                             </div>
-                                            <p className='font-bold'>ABH Soil</p>
+                                            <p className='font-bold'>{item.name}</p>
                                         </div>
                                     ))
                                 }
@@ -111,13 +112,13 @@ export default function Project() {
                             </div>
                             <div className='w-full py-3'>
                                 {
-                                    Array.from({ length: 3 }).map((item, index) => (
+                                    Authority.map((item, index) => (
                                         <div className='w-full p-2.5 border-b-2 flex justify-between items-center' key={index}>
                                             <div className='flex items-center gap-2'>
-                                                <UserCog size={16} />
-                                                <p>Geotech Engineer</p>
+                                                {item.svg}
+                                                <p>{item.title}</p>
                                             </div>
-                                            <p className='font-bold'>ABH Soil</p>
+                                            <p className='font-bold'>{item.name}</p>
                                         </div>
                                     ))
                                 }
