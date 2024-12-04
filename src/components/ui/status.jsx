@@ -10,7 +10,7 @@ const statusVariants = cva(
                 inProgress:
                     "bg-[#F5D451] text-black",
                 notStarted:
-                    "bg-[#C8C8C8] text-white",
+                    "dark:bg-muted bg-gray-500 text-white",
                 onHold:
                     "bg-black text-white",
                 completed:

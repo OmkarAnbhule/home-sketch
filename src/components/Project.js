@@ -5,6 +5,11 @@ import { useParams } from 'next/navigation'
 import { fetchProjectById } from '@/utils/ProjectsUtils'
 import { Status } from './ui/status'
 import { Edit, MapPin, UserCog } from 'lucide-react'
+import Sheet from './ui/sheet'
+import dynamic from 'next/dynamic'
+import Task from './Task'
+
+const Files = dynamic(() => import('./Files'), { ssr: false })
 
 export default function Project() {
     const { project } = useParams()
@@ -14,12 +19,13 @@ export default function Project() {
     const tabsRef = useRef([]);
 
     useEffect(() => {
-        if (tabsRef.current[active]) {
-            tabsRef.current[active].scrollIntoView({
-                behavior: 'smooth',
-                inline: 'center',
-            });
-        }
+        if (window.innerWidth <= '360px')
+            if (tabsRef.current[active]) {
+                tabsRef.current[active].scrollIntoView({
+                    behavior: 'smooth',
+                    inline: 'center',
+                });
+            }
     }, [active]);
 
     useEffect(() => {
@@ -46,6 +52,9 @@ export default function Project() {
                                 <p className=' break-words whitespace-pre-wrap w-4/5 truncate line-clamp-2 '>
                                     {item?.address}
                                 </p>
+                                <Sheet btnText={'files'} >
+                                    <Files />
+                                </Sheet>
                             </div>
                         </div>
                         <div className='w-full h-full bg-muted rounded-lg p-3'>
@@ -117,7 +126,7 @@ export default function Project() {
                     </div>
                 </div>
                 <div className='w-full h-full'>
-                    <div className='w-full h-24 md:gap-6 md:px-2 flex items-center overflow-x-hidden no-scrollbar'>
+                    <div className='w-full h-24 md:gap-6 md:px-2 flex items-center overflow-x-auto no-scrollbar'>
                         {
                             ['Concept Stage', 'Preliminary Drawing', 'Developer Approval', 'Construction Drawings', 'Building Permit'].map((item, index) => (
                                 <p
@@ -127,7 +136,7 @@ export default function Project() {
                         }
                     </div>
                     <div className='md:border-2 w-full h-fit md:rounded-t-xl overflow-hidden'>
-                        <div className='bg-gray-200 w-full h-fit hidden md:grid grid-flow-col grid-cols-5 px-3 font-semibold' >
+                        <div className='dark:bg-gray-900 bg-gray-200 w-full h-fit hidden md:grid grid-flow-col grid-cols-5 px-3 font-semibold' >
                             <div className='col-span-2 flex p-2 items-center'>
                                 Tasks
                             </div>
@@ -143,28 +152,7 @@ export default function Project() {
                         </div>
                         {
                             ['inProgress', 'notStarted', 'onHold', 'completed', 'inProgress'].map((item, index) => (
-                                <div className='border-b-2 w-full h-fit flex flex-col gap-3 md:grid md:grid-cols-5 text-gray-600 px-3 py-1' key={index}>
-                                    <div className='col-span-2 flex p-2 items-center gap-2 justify-between '>
-                                        <div className='flex items-center gap-2'>
-                                            <img src={'/profile.png'} alt='profile' className='w-10 h-10 rounded-full object-cover object-top md:hidden block' />
-                                            Task{index + 1} Name
-                                        </div>
-                                        <Status variant={item} className={'md:hidden block'} />
-                                    </div>
-                                    <div className='hidden md:flex items-center gap-2 justify-center'>
-                                        <img src={'/profile.png'} alt='profile' className='w-10 h-10 rounded-full object-cover object-top' />
-                                        <p>John Cena</p>
-                                    </div>
-                                    <div className='flex items-center justify-center w-full flex-col h-full'>
-                                        <Status variant={item} className={'hidden md:block'} />
-                                        <p className='md:hidden w-full flex text-sm justify-end items-end px-4'>
-                                            January 8th, 2024
-                                        </p>
-                                    </div>
-                                    <div className='hidden md:flex items-center justify-end p-4'>
-                                        January 8th, 2024
-                                    </div>
-                                </div>
+                                <Task item={item} index={index} key={index} />
                             ))
                         }
                     </div>
