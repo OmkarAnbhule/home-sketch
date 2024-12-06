@@ -14,6 +14,7 @@ import {
 import userReducer from "./slices/userSlice";
 import filterReducer from './slices/fliterSlice'
 import statusReducer from './slices/projectSlice'
+import salesReducer from './slices/salesSlice'
 
 // Configure LocalForage
 localforage.config({
@@ -37,7 +38,8 @@ localforage
 const combinedReducer = combineReducers({
     user: userReducer,
     filter: filterReducer,
-    project: statusReducer
+    project: statusReducer,
+    sales: salesReducer
 });
 
 const rootReducer = (state, action) => {

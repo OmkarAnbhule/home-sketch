@@ -14,7 +14,7 @@ export default function Hero({ children }) {
     useEffect(() => {
         if (pathname === '/') {
             setActive(0);
-        } else if (pathname === '/sales') {
+        } else if (pathname.startsWith('/sales')) {
             setActive(1);
         } else if (pathname.startsWith('/projects')) {
             setActive(2);

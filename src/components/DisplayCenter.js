@@ -6,7 +6,7 @@ import { DisplayCardSkeleton } from './ui/Skeleton';
 import { fetchDisplayCards } from '@/utils/DIsplayCenterUtils';
 import { useDispatch, useSelector } from 'react-redux';
 
-const DisplayCenterCard = React.memo(({ card }) => {
+export const DisplayCenterCard = React.memo(({ card }) => {
     const carouselRef = useRef(null);
     const scrollLeft = () => {
         if (carouselRef.current) {
