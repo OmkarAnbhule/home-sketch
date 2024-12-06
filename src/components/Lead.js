@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
 import { Button } from './ui/button'
 import { Form } from './ui/form';
 import { Separator } from './ui/separator';
@@ -9,7 +9,6 @@ import { z } from 'zod';
 import { RadioComponent, ReusableField } from './ui/form-components';
 import { Input } from './ui/input';
 import Notes from './Notes';
-import { DialogActions } from '@mui/material';
 
 const formSchema = z.object({
     fullName: z.string().min(2, { message: 'Full Name must be at least 2 characters' }).max(50, { message: 'Full Name must be at most 50 characters' }),
