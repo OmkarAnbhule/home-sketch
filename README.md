@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HomeSketch
 
-## Getting Started
+HomeSketch is an interactive web platform for showcasing houses and plots, complete with detailed information and 3D visualizations. The website also offers tools for managing sales projects, communication, and project organization.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. **House & Plot Details**:
+   - Comprehensive information about land width, depth, and other dimensions.
+   - High-quality 3D models for visualization.
+
+2. **Sales Projects**:
+   - Track and manage ongoing sales projects.
+
+3. **Inbox**:
+   - Built-in messaging system to communicate with clients or team members.
+
+4. **Projects Tab**:
+   - Manage and organize multiple projects efficiently.
+
+## 📂 Project Structure
+
+```
+src/
+├── components/       # Reusable UI components
+├── pages/            # Application pages
+├── utils/            # Utility functions
+├── public/           # Static assets (3D models, images, etc.)
+└── styles/           # CSS/Tailwind files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Technologies Used
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Frontend**: React.js, Three.js for 3D visualizations
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Styling**: Tailwind CSS
+- **Real-Time Communication**: Socket.IO
+- **Hosting**: Vercel (or any hosting platform)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📸 Screenshots
 
-## Learn More
+![HomeSketch Homepage](https://github.com/user-attachments/assets/83a2ca72-d86d-4917-a5a6-96d1434be754)
+![3D Model View](https://github.com/user-attachments/assets/32390ce4-d3a3-4624-a6fc-fc2a216f9f8c)
 
-To learn more about Next.js, take a look at the following resources:
+## 💻 Installation & Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/OmkarAnbhule/home-sketch.git
+   cd home-sketch
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 Deployment
+
+The application can be deployed using platforms like Vercel, Netlify, or AWS. Follow their respective deployment guides.
+
+## 🤝 Contributing
+
+We welcome contributions! Follow these steps:
+1. Fork the repo.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Create a Pull Request.
+
+## 📧 Contact
+
+For any inquiries, feel free to reach out:
+- **GitHub**: [OmkarAnbhule](https://github.com/OmkarAnbhule)
+- **Email**: [email@example.com](mailto:email@example.com)
+
+## 🌟 Support
+
+If you like this project, please give it a ⭐ on [GitHub](https://github.com/OmkarAnbhule/home-sketch)!
+
+---
+
+Happy Sketching! 🏡
