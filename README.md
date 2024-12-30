@@ -91,7 +91,7 @@ We welcome contributions! Follow these steps:
 
 For any inquiries, feel free to reach out:
 - **GitHub**: [OmkarAnbhule](https://github.com/OmkarAnbhule)
-- **Email**: [email@example.com](mailto:email@example.com)
+- **Email**: [omkaranbhule75@gmail.com](mailto:omkaranbhule75@gmail.com)
 
 ## 🌟 Support
 
